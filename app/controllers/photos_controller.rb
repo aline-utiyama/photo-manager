@@ -1,6 +1,6 @@
 class PhotosController < ApplicationController
   def index
-    @photos = Photo.where(user: current_user)
+    @photos = Photo.where(user: current_user).order(created_at: :desc)
   end
 
   def new

@@ -9,7 +9,7 @@ class SessionsController < ApplicationController
 
     if @user && @user.authenticate(params[:password])
       session[:user_id] = @user.id
-      redirect_to root_path
+      redirect_to photos_path
     else
       if params[:user_id].empty? && params[:password].empty?
         flash[:alert] = "・ユーザーIDを入力してください"
@@ -29,6 +29,6 @@ class SessionsController < ApplicationController
   def destroy
     session[:user_id] = nil
     flash[:notice]="Logged Out"
-    redirect_to root_path
+    redirect_to login_path
   end
 end

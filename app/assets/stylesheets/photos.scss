@@ -4,6 +4,7 @@
 
 .photos {
   display: flex;
+  flex-wrap: wrap;
 
   .photo-card {
     display: flex;
@@ -12,6 +13,17 @@
 
     .image {
       margin: 8px;
+      box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+
+      img {
+        object-fit: contain;
+        height: 200px;
+        width: 200px;
+      }
     }
   }
+}
+
+.error-message {
+  color: red;
 }
