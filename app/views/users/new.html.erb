@@ -1,0 +1,14 @@
+<%= link_to 'ホーム', root_path %>
+
+<%= form_for @user, url: users_path do |form| %>
+  <h2> アカウント登録 </h2>
+    
+  <%= form.label 'ユーザーID' %>
+  <%= form.text_field :user_id, required: true %>
+  <br>
+  <%= form.label 'パスワード' %>
+  <%= form.password_field :password, required: true %>
+  <br>
+  <br>
+  <%=  submit_tag("アカウント登録") %>
+<% end %>

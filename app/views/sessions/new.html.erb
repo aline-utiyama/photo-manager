@@ -1,0 +1,15 @@
+<%= link_to 'ホーム', root_path %>
+<%= form_tag login_path do %>
+  <h2> ログイン </h2>
+  <div style='color: red;'>
+    <%= flash[:alert].try(:html_safe) %>
+  </div>
+  <br>
+  <%= label_tag 'ユーザーID'%>
+  <%= text_field_tag :user_id, params[:id] %>
+  <br>
+  <%= label_tag 'パスワード'%>
+  <%= password_field_tag :password %></p> 
+
+  <%= submit_tag "ログインする" %>     
+<% end %>
