@@ -1,6 +1,10 @@
 <%= link_to 'ログアウト', logout_path %>
 <h1>写真一蘭</h1>
+<%= link_to 'MyTweetappと連携', authorize_tweet_path %>
+<br>
 <%= link_to '写真アップロード', new_photo_path %>
+<br>
+<%= notice %>
 <br>
 <div class="photos">
   <% @photos.each do |photo| %>
@@ -9,6 +13,11 @@
       <div class="image">
         <%= image_tag photo.image %>
       </div>
+      <% if session[:code] %>
+        <%= form_tag send_tweet_path(token: params[:code], photo: photo), method: :post do %>
+          <%= submit_tag "ツイートする" %>
+        <% end %>
+      <% end %>
     </div>
   <% end %>
 </div>

@@ -9,5 +9,9 @@ Rails.application.routes.draw do
   post '/login' => 'sessions#create'
   get '/logout' => 'sessions#destroy'
 
-  resources :photos, only: [:index, :new, :create]
+  resources :photos, only: [:index, :show, :new, :create]
+
+  get '/authorize_tweet' => 'photos#authorize_tweet'
+  get '/oauth/callback' => 'photos#callback'
+  post 'send_tweet' => 'photos#send_tweet'
 end
