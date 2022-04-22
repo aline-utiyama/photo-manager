@@ -1,0 +1,15 @@
+<%= link_to 'ログアウト', logout_path %>
+
+<%= form_for @photo, url: photos_path do |form| %>
+  <h1>写真アップロード</h1>
+    
+  <%= form.label 'タイトル' %>
+  <%= form.text_field :title %>
+  <br>
+  <%= form.label '画像ファイル' %>
+  <%= form.file_field :image %>
+  <br>
+  <br>
+  <%=  submit_tag("アップロード") %>
+<% end %>
+<%= link_to 'キャンセル', photos_path %>

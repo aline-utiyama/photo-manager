@@ -1,0 +1,14 @@
+<%= link_to 'ログアウト', logout_path %>
+<h1>写真一蘭</h1>
+<%= link_to '写真アップロード', new_photo_path %>
+<br>
+<div class="photos">
+  <% @photos.each do |photo| %>
+    <div class="photo-card">
+      <h4 class="title"><%= photo.title%></h4>
+      <div class="image">
+        <%= image_tag photo.image, width: 200 %>
+      </div>
+    </div>
+  <% end %>
+</div>
