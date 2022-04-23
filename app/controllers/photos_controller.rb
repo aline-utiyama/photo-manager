@@ -40,25 +40,7 @@ class PhotosController < ApplicationController
   end
 
   def send_tweet
-    key = "Bearer #{session[:access_token]}"
-    url = URI("https://arcane-ravine-29792.herokuapp.com/api/tweets")
-
-    http = Net::HTTP.new(url.host, url.port)
-    http.use_ssl = true
-
-    request = Net::HTTP::Post.new(url)
-    request["Accept"] = 'application/json'
-    request["Content-Type"] = 'application/json'
-    request["Authorization"] = key
-    request.body = "{\"text\":\"テスト画像\",\"url\":\"http://localhost:3000/photos/#{params[:photo]}\"}"
-
-    response = http.request(request)
-    body = JSON.parse(response.read_body)
-  
-    if response.is_a?(Net::HTTPCreated)
-      flash[:notice] = "ツイート作成しました。"
-      redirect_to photos_path
-    end
+    create_tweet
   end
 
   private
@@ -88,5 +70,27 @@ class PhotosController < ApplicationController
     body = JSON.parse(response.read_body)
 
     session[:access_token] = body['access_token']
+  end
+
+  def create_tweet
+    key = "Bearer #{session[:access_token]}"
+    url = URI("https://arcane-ravine-29792.herokuapp.com/api/tweets")
+
+    http = Net::HTTP.new(url.host, url.port)
+    http.use_ssl = true
+
+    request = Net::HTTP::Post.new(url)
+    request["Accept"] = 'application/json'
+    request["Content-Type"] = 'application/json'
+    request["Authorization"] = key
+    request.body = "{\"text\":\"テスト画像\",\"url\":\"http://localhost:3000/photos/#{params[:photo]}\"}"
+
+    response = http.request(request)
+    body = JSON.parse(response.read_body)
+  
+    if response.is_a?(Net::HTTPCreated)
+      flash[:notice] = "ツイートを作成しました。"
+      redirect_to photos_path
+    end
   end
 end
