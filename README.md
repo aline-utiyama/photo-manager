@@ -5,20 +5,23 @@ application up and running.
 
 Things you may want to cover:
 
-* Ruby version
+- Ruby version
+  2.6.6
 
-* System dependencies
+- From within the application directory run:
+  bundle install
+  yarn install
 
-* Configuration
+- Creating a Development Database
+  rails db:create
 
-* Database creation
+- Starting the Web Application locally
+  Add CLIENT_ID and CLIENT_SECRET in your .env file.
 
-* Database initialization
+  rails server
 
-* How to run the test suite
+- How to run the test suite
+  rails test
 
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+課題: https://github.com/aline-utiyama/photo-manager
+かかった時間: 12 時間
